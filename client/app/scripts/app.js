@@ -18,7 +18,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, GoogleProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -31,5 +31,9 @@ angular
         controller: 'AboutCtrl'
       });
 
+
+
     $urlRouterProvider.otherwise('home');
+
+    GoogleProvider.setApiKey('AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg');
   });

@@ -1,0 +1,17 @@
+'use strict';
+
+angular.module('clientApp')
+.service('SearchPlacesService', ['$scope', '$http', function($http) {
+  
+  this.getPlaces = function() {
+    return $http.get({
+      method: 'JSONP',
+      url: '?reference=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g',
+      params: {
+        
+      }  
+    });
+  };
+
+
+}]);

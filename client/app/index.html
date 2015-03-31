@@ -5,6 +5,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -14,6 +15,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
   </head>
   <body ng-app="clientApp">
     <!--[if lt IE 7]>
@@ -38,7 +40,7 @@
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+              <li class="active"><a ui-sref="home">Home</a></li>
               <li><a ui-sref="about">About</a></li>
             </ul>
           </div>
@@ -85,8 +87,12 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/providers/google.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/googleApi.js"></script>
+        <!-- <script src="scripts/controllers/SearchPlaces.js"></script> -->
+        <!-- <script src="scripts/services/SearchPlaces.js"></script> -->
         <!-- endbuild -->
 </body>
 </html>
