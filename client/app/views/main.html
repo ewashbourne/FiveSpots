@@ -30,5 +30,12 @@
 
 
 <div ng-controller="RestaurantsCtrl">
-  {{ restaurants }}
+  <div ng-repeat='restaurant in restaurants'>
+    <hr />
+    <h2>{{ restaurant.name }} </h2>
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
+    address: {{ restaurant.vicinity }}<br />
+    price level: {{ restaurant.price_level }}<br />
+    rating: {{ restaurant.rating }}<br />
+  </div>
 </div>
