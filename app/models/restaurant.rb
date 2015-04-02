@@ -1,5 +1,13 @@
-class Restaurant 
-  def self.search
-    response = HTTParty.get "https://maps.googleapis.com/maps/api/place/details/json?reference=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg"
+class Restaurant #< ActiveRecord::Base
+  def self.search(location)
+    location ||= '33.7722636,-84.3661896'
+    base = "https://maps.googleapis.com/maps/api/"
+    search_type = "place/nearbysearch/json"
+    query = "?location=" + location + "&radius=500&opennow=true&types=restaurant"
+    key = '&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg'
+    
+    query_url = base + search_type + query + key
+    response = HTTParty.get query_url
+
   end  
 end
