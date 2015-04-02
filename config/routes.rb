@@ -4,7 +4,4 @@ Rails.application.routes.draw do
     # resources :restaurants, only: :show
     get '/restaurants', to: 'restaurants#show', as: 'restaurant'
   end
-  
-
-
 end
