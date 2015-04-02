@@ -17,7 +17,9 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
+    'ngGeolocation',
     'uiGmapgoogle-maps'
+
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
