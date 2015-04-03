@@ -3,7 +3,6 @@
 angular.module('clientApp')
 .controller('RestaurantsCtrl', ['$http', '$scope', 'RestaurantsService', function($http, $scope, RestaurantsService) {
   
-
   $scope.map = {
   center: {
     latitude:  33.7722818, 
@@ -27,10 +26,11 @@ function onError(error) {
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-    // plug the geolocate data into the location variable
-  var location = '33.7722636, -84.3661896';
+   // plug the geolocate data into the location variable
+  var location = '33.7722636,-84.3661896';
 
   var url = '/api/restaurants.json?location=' + location;
+
 
   $scope.getRestaurants = function (url) {
 
