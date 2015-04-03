@@ -17,7 +17,6 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'ngGeolocation',
     'uiGmapgoogle-maps'
 
   ])
