@@ -1,13 +1,13 @@
 
 <div class="angular-google-map-container" ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'> <marker coords="marker.coords" idKey="marker.idKey"></marker></ui-gmap-google-map>
 </div>
 
 <div ng-controller="RestaurantsCtrl">
   <div ng-repeat='restaurant in restaurants'>
     <hr />
     <h2>{{ restaurant.name }} </h2>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyDtE-kWAsHzrb-z50xThCNsObxbR_9bl7E" />
     address: {{ restaurant.vicinity }}<br />
     price level: {{ restaurant.price_level }}<br />
     rating: {{ restaurant.rating }}<br />

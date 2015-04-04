@@ -20,11 +20,23 @@ angular.module('clientApp')
     $scope.$apply();
   };
 
+  var createMarker = function(position) {
+    $scope.map.marker = {
+      idKey: 0,
+      coords: {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }
+    };
+    $scope.apply();
+  };
+
+
 function onError(error) {
     console.log('code: ' + error.code  + '\n' + 'message: ' + error.message + '\n');
 }
 
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
+navigator.geolocation.getCurrentPosition(onSuccess, createMarker, onError);
 
    // plug the geolocate data into the location variable
   var location = '33.7722636,-84.3661896';
