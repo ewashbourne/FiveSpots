@@ -1,13 +1,28 @@
 
-<div class="angular-google-map-container" ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'> <marker coords="map.marker.coords" idKey="map.marker.idKey"></marker></ui-gmap-google-map>
+<!-- <div class="angular-google-map-container" ng-controller="RestaurantsCtrl">
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'> 
+  <ui-gmap-marker models='myMarkers'></ui-gmap-marker ></ui-gmap-google-map>
+>>>>>>> 84b4b422937ee6a5c1b2c308214b1e050c8af715
 </div>
+ -->
+
 
 <div ng-controller="RestaurantsCtrl">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom">
+    <ui-gmap-marker coords="marker.coords" idKey="1">
+    <\ui-gmap-marker>
+   <!--  <ui-gmap-markers coords="'self'" models="restaurantMarkers">
+    <\ui-gmap-markers> -->
+  </ui-gmap-google-map>
+
+
+
+
+
   <div ng-repeat='restaurant in restaurants'>
     <hr />
     <h2>{{ restaurant.name }} </h2>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyDtE-kWAsHzrb-z50xThCNsObxbR_9bl7E" />
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
     address: {{ restaurant.vicinity }}<br />
     price level: {{ restaurant.price_level }}<br />
     rating: {{ restaurant.rating }}<br />
