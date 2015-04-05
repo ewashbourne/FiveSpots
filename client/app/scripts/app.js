@@ -16,14 +16,16 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'uiGmapgoogle-maps'
+
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
         url: '/',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'RestaurantsCtrl'
       })
       .state('about', {
         url: '/about',
