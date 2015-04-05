@@ -8,10 +8,10 @@
 
 <div ng-controller="RestaurantsCtrl">
   <ui-gmap-google-map center="map.center" zoom="map.zoom">
-    <ui-gmap-marker coords="marker.coords" idKey="1">
+    <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="google.maps.SymbolPath.CIRCLE">
     <\ui-gmap-marker>
-   <!--  <ui-gmap-markers coords="'self'" models="restaurantMarkers">
-    <\ui-gmap-markers> -->
+    <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
+    <\ui-gmap-markers>
   </ui-gmap-google-map>
 
 

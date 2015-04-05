@@ -51,26 +51,25 @@ angular.module('clientApp')
 
   function makeRestaurantMarkers(restaurants) {
     var list = [];
-    var arrayLength = restaurants.results;
-    console.log(restaurants.results);
+    console.log(restaurants[0]);
+    var arrayLength = restaurants.length;
+    console.log(arrayLength);
     for (var i=0; i < arrayLength; i++) {
       list.push({
-        idKey: restaurants.results[i].place_id,
-        coords: {
-          latitude: restaurants.results[i].geometry.location.lat,
-          longitude: restaurants.results[i].geometry.location.lng
-        }
+        id: restaurants[i].place_id,
+        latitude: restaurants[i].geometry.location.lat,
+        longitude: restaurants[i].geometry.location.lng
+
       });
     }
 
     // var i = 0;
-    // while (restaurants.results[i] === null ) {
+    // while (restaurants.results[i] !== null ) {
     //   list.push({
-    //     idKey: restaurants.results[i].place_id,
-    //     coords: {
-    //       latitude: restaurants.results[i].geometry.location.lat,
-    //       longitude: restaurants.results[i].geometry.location.lng
-    //     }
+    //     id: restaurants.results[i].place_id,
+    //     latitude: restaurants.results[i].geometry.location.lat,
+    //     longitude: restaurants.results[i].geometry.location.lng
+        
     //   });
     //   i++;
     // }
@@ -98,6 +97,8 @@ angular.module('clientApp')
     .success(function(data) {
       $scope.restaurants = data.results;
       makeRestaurantMarkers(data.results);
+      console.log('data.results');
+      console.log($scope.restaurantMarkers);
     })
     .error(function(data) {
       console.log('error --->\n' + data);
