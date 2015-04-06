@@ -8,8 +8,7 @@
 
 <div ng-controller="RestaurantsCtrl">
   <ui-gmap-google-map center="map.center" zoom="map.zoom">
-    <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="google.maps.SymbolPath.CIRCLE">
-    <\ui-gmap-marker>
+    <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'">
     <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
     <\ui-gmap-markers>
   </ui-gmap-google-map>
@@ -21,7 +20,7 @@
   <div ng-repeat='restaurant in restaurants'>
     <hr />
     <h2>{{ restaurant.name }} </h2>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
+    <!-- <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyA5NOMzV1J0S1nADTkc06UrFh_n7JUA9yU" /> -->
     address: {{ restaurant.vicinity }}<br />
     price level: {{ restaurant.price_level }}<br />
     rating: {{ restaurant.rating }}<br />
