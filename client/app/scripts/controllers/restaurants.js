@@ -11,16 +11,6 @@ angular.module('clientApp')
     },
     zoom: 15,
    };
-
-
-  // $scope.marker = {
-  //     coords: {
-  //       latitude: 33.7722818,
-  //       longitude: -84.56655619999999
-  //     }
-  //   };
-
-
    
    var onSuccess = function(position) {
     $scope.map.center = {
@@ -38,21 +28,10 @@ angular.module('clientApp')
     $scope.$apply();
   };
 
-  // var createMarker = function(position) {
-  //   $scope.marker = {
-  //     idKey: 0,
-  //     coords: {
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude
-  //     }
-  //   };
-  //   $scope.apply();
-  // };
-
   function makeRestaurantMarkers(restaurants) {
     var list = [];
     console.log(restaurants[0]);
-    var arrayLength = restaurants.length;
+    var arrayLength = 5;
     console.log(arrayLength);
     for (var i=0; i < arrayLength; i++) {
       list.push({
@@ -62,18 +41,6 @@ angular.module('clientApp')
 
       });
     }
-
-    // var i = 0;
-    // while (restaurants.results[i] !== null ) {
-    //   list.push({
-    //     id: restaurants.results[i].place_id,
-    //     latitude: restaurants.results[i].geometry.location.lat,
-    //     longitude: restaurants.results[i].geometry.location.lng
-        
-    //   });
-    //   i++;
-    // }
-
     $scope.restaurantMarkers = list;
 
   }
@@ -85,11 +52,10 @@ angular.module('clientApp')
 
   navigator.geolocation.getCurrentPosition(onSuccess);
 
-   // plug the geolocate data into the location variable
+  // plug the geolocate data into the location variable
   var location = '33.7722636,-84.3661896';
 
   var url = '/api/restaurants.json?location=' + location;
-
 
   $scope.getRestaurants = function (url) {
 

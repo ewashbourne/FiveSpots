@@ -1,30 +1,48 @@
-
-<!-- <div class="angular-google-map-container" ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'> 
-  <ui-gmap-marker models='myMarkers'></ui-gmap-marker ></ui-gmap-google-map>
->>>>>>> 84b4b422937ee6a5c1b2c308214b1e050c8af715
-</div>
- -->
-
-
 <div ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center="map.center" zoom="map.zoom">
-    <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="google.maps.SymbolPath.CIRCLE">
-    <\ui-gmap-marker>
-    <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
-    <\ui-gmap-markers>
-  </ui-gmap-google-map>
-
-
-
-
-
-  <div ng-repeat='restaurant in restaurants'>
-    <hr />
-    <h2>{{ restaurant.name }} </h2>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
-    address: {{ restaurant.vicinity }}<br />
-    price level: {{ restaurant.price_level }}<br />
-    rating: {{ restaurant.rating }}<br />
+  <div class="intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="intro-message">
+            <h1>FiveSpots</h1>
+            <div class="intro-message-tagline col-md-8 col-md-offset-2">
+            <p>Simple, fast app to discover restaurants in your area.</p>
+            </div>
+          </div>
+          <div class="row buttons-row">
+            <div class="buttons">
+              <button type="submit" class="btn btn-primary btn-xlarge">High Five</button>
+              <button type="button" class="btn btn-warning btn-xlarge">Low Five</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- 
+<div class="container">
+  <div class="row">
+    <div ng-controller="RestaurantsCtrl">
+      <div class="restaurants-list col-sm-3">
+        <div ng-repeat="restaurant in restaurants | limitTo:5">
+          <hr />
+          <h4>{{ restaurant.name }} </h4>
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyAwBJ9Ra3Iwzm0VVPDIi-cV0xD0lWq8AP0" />
+          address: {{ restaurant.vicinity }}<br />
+          price level: {{ restaurant.price_level }}<br />
+          rating: {{ restaurant.rating }}<br />
+        </div>
+      </div> 
+      <div class="search-map col-sm-9">  
+        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+          <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="google.maps.SymbolPath.CIRCLE">
+          </ui-gmap-marker>
+          <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
+          </ui-gmap-markers>
+        </ui-gmap-google-map>
+      </div>
+    </div>
+  </div>
+</div>  -->
