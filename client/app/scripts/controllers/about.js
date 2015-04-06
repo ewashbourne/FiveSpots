@@ -8,10 +8,12 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('AboutCtrl',['$scope',  function ($scope) {
+    $scope._ = _;   
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+    console.log($scope.awesomeThings);
+  }]);
