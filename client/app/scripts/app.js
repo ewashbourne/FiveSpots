@@ -35,3 +35,7 @@ angular
 
     $urlRouterProvider.otherwise('home');
   });
+
+  
+  // remove constant after testing
+  

@@ -3,8 +3,9 @@ class Restaurant #< ActiveRecord::Base
     location ||= '33.7722636,-84.3661896'
     base = "https://maps.googleapis.com/maps/api/"
     search_type = "place/nearbysearch/json"
-    query = "?location=" + location + "&radius=500&opennow=true&types=restaurant"
-    key = '&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg'
+    query = "?location=" + location + "&radius=800&opennow=true&types=restaurant"
+    # query = "?location=" + location + "&radius=800&types=restaurant"
+    key = '&key=AIzaSyA5NOMzV1J0S1nADTkc06UrFh_n7JUA9yU'
     
     query_url = base + search_type + query + key
     response = HTTParty.get query_url

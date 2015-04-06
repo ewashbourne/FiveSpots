@@ -1,29 +1,28 @@
 
-<!-- <div class="angular-google-map-container" ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'> 
-  <ui-gmap-marker models='myMarkers'></ui-gmap-marker ></ui-gmap-google-map>
-</div>
- -->
-
-
-<div ng-controller="RestaurantsCtrl">
-  <ui-gmap-google-map center="map.center" zoom="map.zoom">
-    <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="google.maps.SymbolPath.CIRCLE">
-    <\ui-gmap-marker>
-    <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
-    <\ui-gmap-markers>
-  </ui-gmap-google-map>
-
-
-
-
-
-  <div ng-repeat='restaurant in restaurants'>
-    <hr />
-    <h2>{{ restaurant.name }} </h2>
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyD5xULBmWzVQIcTldWCvVHRv0JBEycklxg" />
-    address: {{ restaurant.vicinity }}<br />
-    price level: {{ restaurant.price_level }}<br />
-    rating: {{ restaurant.rating }}<br />
+<div class="container">
+  <div class="row">
+    <div ng-controller="RestaurantsCtrl">
+      <div class="restaurants-list col-sm-3">
+        <div ng-repeat="restaurant in restaurants | limitTo:5">
+          <hr />
+          <h4>{{ restaurant.name }} </h4>
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photos[0].photo_reference }}&key=AIzaSyAwBJ9Ra3Iwzm0VVPDIi-cV0xD0lWq8AP0" />
+          address: {{ restaurant.vicinity }}<br />
+          price level: {{ restaurant.price_level }}<br />
+          rating: {{ restaurant.rating }}<br />
+        </div>
+      </div> 
+      <div class="search-map col-sm-9">  
+        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+          <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'">
+          </ui-gmap-marker>
+          <ui-gmap-markers coords="'self'" models="restaurantMarkers" idKey="restaurantMarkers.id">
+          </ui-gmap-markers>
+        </ui-gmap-google-map>
+      </div>
+    </div>
   </div>
-</div>
+</div> 
+
+
+

@@ -1,109 +1,91 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('RestaurantsCtrl', ['$http', '$scope', 'RestaurantsService', function($http, $scope, RestaurantsService) {
-  
+.controller('RestaurantsCtrl', ['$http', '$rootScope', '$scope', 'RestaurantsService', function($http, $rooScope, $scope, RestaurantsService) {
 
-  $scope.map = {
-    center: {
-      latitude:  33.7722818, 
-      longitude: -84.36655619999999
-    },
-    zoom: 15,
-   };
+  $scope._ = _;   
+  $scope.restaurantMarkers = [];
 
-
-  // $scope.marker = {
-  //     coords: {
-  //       latitude: 33.7722818,
-  //       longitude: -84.56655619999999
-  //     }
-  //   };
-
-
-   
-   var onSuccess = function(position) {
-    $scope.map.center = {
+  // this function sets up the Original marker and map center
+  var onSuccess = function(position) {
+    var coords = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
     };
-    $scope.marker = {
+    console.log('User speed: ' + position.coords.speed);
+    console.log(coords);
+    $scope.map = {
+      center: coords,
+      zoom: 15,
+    };
+    $scope.marker = angular.isUndefined($scope.marker) ? {  
       idKey: 0,
-      coords: {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }
-    };
-    
-    $scope.$apply();
+      coords: coords
+    } : $scope.marker;
+    var location = coords.latitude.toString() + ',' + coords.longitude.toString();
+    var url = '/api/restaurants.json?location=' + location;
+    $scope.getRestaurants(url);
   };
 
-  // var createMarker = function(position) {
-  //   $scope.marker = {
-  //     idKey: 0,
-  //     coords: {
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude
-  //     }
-  //   };
-  //   $scope.apply();
-  // };
+    // Html 5 Api function to get position 
+  navigator.geolocation.getCurrentPosition(onSuccess);
 
+  // function create markers from a list of restaurants
   function makeRestaurantMarkers(restaurants) {
     var list = [];
-    console.log(restaurants[0]);
+    console.log('in makeRestaurantMarkers restaurant: ' + JSON.stringify(restaurants));
     var arrayLength = restaurants.length;
-    console.log(arrayLength);
+    console.log('arrayLength: ' + arrayLength);
     for (var i=0; i < arrayLength; i++) {
       list.push({
         id: restaurants[i].place_id,
         latitude: restaurants[i].geometry.location.lat,
         longitude: restaurants[i].geometry.location.lng
-
       });
     }
-
-    // var i = 0;
-    // while (restaurants.results[i] !== null ) {
-    //   list.push({
-    //     id: restaurants.results[i].place_id,
-    //     latitude: restaurants.results[i].geometry.location.lat,
-    //     longitude: restaurants.results[i].geometry.location.lng
-        
-    //   });
-    //   i++;
-    // }
-
     $scope.restaurantMarkers = list;
-
   }
 
 
+  
+  //  ????
   function onError(error) {
       console.log('code: ' + error.code  + '\n' + 'message: ' + error.message + '\n');
   }
 
-  navigator.geolocation.getCurrentPosition(onSuccess);
 
-   // plug the geolocate data into the location variable
-  var location = '33.7722636,-84.3661896';
+  // filter list of restaurants to (lower level)
+  function restaurantSelect() {
+    // return _.find($scope.restaurants, function(restaurant) {
+    //   // console.log('in restaurantSelect: ' + JSON.stringify(restaurant));
+    //   return restaurant.price_level < 3 && restaurant.rating > 3.8;
+    //     // restaurant.opening_hours.open_now && 
+    // });
+    return _.map(_.filter($scope.restaurants, function(restaurant){
+      return restaurant.price_level < 3 && restaurant.rating > 3.8;
+    }));
+  }
+  
+  // select restaurant for lower end  -->  button entry function
+  $scope.getComfortFood = function () { 
+    // makeRestaurantMarkers(restaurantSelect());
+    console.log('in getComfortFood');
+    
+  };
 
-  var url = '/api/restaurants.json?location=' + location;
-
-
+  // get data from google places via rails server
   $scope.getRestaurants = function (url) {
-
     RestaurantsService.getRestaurants(url) 
     .success(function(data) {
-      $scope.restaurants = data.results;
-      makeRestaurantMarkers(data.results);
-      console.log('data.results');
-      console.log($scope.restaurantMarkers);
+      var results = data.results;
+      // console.log('results: ' + JSON.stringify(results));
+      $scope.restaurants = results;
+      console.log('result from restaurantSelect: ' + JSON.stringify(restaurantSelect()));
+      makeRestaurantMarkers(restaurantSelect());
     })
     .error(function(data) {
       console.log('error --->\n' + data);
     });
   };
 
-  $scope.getRestaurants(url);
 }]);
