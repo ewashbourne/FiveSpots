@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('RestaurantsCtrl', ['$http', '$rootScope', '$scope', 'RestaurantsService', function($http, $rooScope, $scope, RestaurantsService) {
+.controller('RestaurantsCtrl', ['$http', '$rootScope', '$timeout', '$scope', 'RestaurantsService', function($http, $rootScope, $timeout, $scope, RestaurantsService) {
 
   $scope._ = _;   
   $scope.restaurants = [];
@@ -19,7 +19,7 @@ angular.module('clientApp')
     console.log(coords);
     $scope.map = {
       center: coords,
-      zoom: 16,
+      zoom: 15,
     };
   };
 
@@ -46,7 +46,7 @@ angular.module('clientApp')
   }
 
     // Html 5 Api function to get position 
-  navigator.geolocation.getCurrentPosition(centerMap);
+  navigator.geolocation.watchPosition(centerMap);
 
   navigator.geolocation.watchPosition(userPosition);
 
@@ -75,11 +75,6 @@ angular.module('clientApp')
     console.log(list);
     $scope.restaurants = list;
     $scope.restaurantMarkers = list;
-  }
-  
-  //  ????
-  function onError(error) {
-      console.log('code: ' + error.code  + '\n' + 'message: ' + error.message + '\n');
   }
 
   // filter list of restaurants into high & low
@@ -141,7 +136,6 @@ angular.module('clientApp')
     return _.sortByOrder(restaurants, ['rating','price_level'], [false, false]);
   }
 
-    
   // get data from google places via rails server
   $scope.getRestaurants = function (url) {
     RestaurantsService.getRestaurants(url) 
@@ -154,4 +148,5 @@ angular.module('clientApp')
     });
   };
 
-}]);4
+}]);
+
