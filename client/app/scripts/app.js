@@ -25,7 +25,7 @@ angular
       .state('home', {
         url: '/',
         templateUrl: 'views/main.html',
-        controller: 'RestaurantsCtrl'
+        controller: 'MainCtrl'
       })
       .state('about', {
         url: '/about',
@@ -37,5 +37,4 @@ angular
   });
 
   
-  // remove constant after testing
   
