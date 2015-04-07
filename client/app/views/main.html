@@ -31,9 +31,10 @@
             address: {{ restaurant.vicinity }}<br />
             price level: {{ restaurant.priceLevel }}<br />
             rating: {{ restaurant.rating }}<br />
+            ID: {{ restaurant.id }}<br />
             <div ng-controller="ReviewCtrl">
-              <button ng-click="getReview(restaurant.id)">get reviews</button>
-              <button ng-click="postReview(restaurant.id)">post review</button>
+              <button ng-click="getReview(restaurant.id)">Get Reviews</button>
+              <a ui-sref="comment"><button>Post Reviews</button></a>
             </div>
           </div>
         </div> 
