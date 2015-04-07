@@ -19,7 +19,7 @@ angular.module('clientApp')
     console.log(coords);
     $scope.map = {
       center: coords,
-      zoom: 15,
+      zoom: 16,
     };
 
     $scope.marker = $scope.userPositionSet ? $scope.marker : makeMarker(coords);
@@ -127,4 +127,4 @@ angular.module('clientApp')
     });
   };
 
-}]);
+}]);4
