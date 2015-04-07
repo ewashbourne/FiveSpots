@@ -74,9 +74,18 @@ h6 {
   width: 800px; 
 }
 
-
-.search-results {
+.search-page {
  background-color: #fff;
+ margin-top: 25px;
+}
+
+.search-list-map {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.restaurant-photos {
+  padding-top: 10px;
 }
 
 /* Custom page footer */
@@ -95,4 +104,16 @@ h6 {
   margin-top: 25px;
 }
 
+.restaurant-list {
+  margin-top: 27px;
+}
+
+.review-buttons {
+  margin-top: 7px;
+}
+
+.leave-comment {
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
   

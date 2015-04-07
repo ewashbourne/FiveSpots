@@ -20,25 +20,33 @@
     </div>
   </div>
 
-  <div ng-show="show" class="search-results">
-    <div class="container">
+  <div ng-show="show" class="search-page">
+    <div class="container search-list-map">
       <div class="row">
-        <div class="restaurants-list col-sm-3">
+        <div class="restaurants-list col-sm-4">
           <div ng-repeat="restaurant in restaurants | limitTo:5">
-            <hr />
-            <h4>{{ restaurant.name }} </h4>
-            <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photoReference }}&key=AIzaSyAwBJ9Ra3Iwzm0VVPDIi-cV0xD0lWq8AP0" />
-            address: {{ restaurant.vicinity }}<br />
-            price level: {{ restaurant.priceLevel }}<br />
-            rating: {{ restaurant.rating }}<br />
-            ID: {{ restaurant.id }}<br />
-            <div ng-controller="ReviewCtrl">
-              <button ng-click="getReview(restaurant.id)">Get Reviews</button>
-              <button ng-click="setRestaurantId(restaurant.id)" ui-sref="comment">Post Reviews</button>
+            <div class="row restaurant-list">
+              <div class="col-sm-4 restaurant-photos">
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=100&maxwidth=100&photoreference={{ restaurant.photoReference }}&key=AIzaSyAwBJ9Ra3Iwzm0VVPDIi-cV0xD0lWq8AP0" style="height:100px; width:100px;" />
+              </div>
+              <div class="col-sm-8">
+                <h4>{{ restaurant.name }} </h4>
+              </div>
+              <div class="restaurant-info">
+                {{ restaurant.vicinity }}<br />
+                Rating: {{ restaurant.rating }}<br />
+              </div>
+              <div class="col-sm-offset-4 review-buttons">
+                <div ng-controller="ReviewCtrl">
+                  <button ng-click="getReview(restaurant.id)">Get Reviews</button>
+                  <button ng-click="setRestaurantId(restaurant.id)" ui-sref="comment">Post Reviews</button>
+                </div>
+              </div>
             </div>
           </div>
         </div> 
-        <div class="search-map col-sm-9">  
+
+        <div class="search-map col-sm-8">  
           <ui-gmap-google-map center="map.center" zoom="map.zoom">
             <ui-gmap-marker coords="marker.coords" idKey="'user'" icon="'https://maps.gstatic.com/mapfiles/ms2/micons/grn-pushpin.png'">
             </ui-gmap-marker>
