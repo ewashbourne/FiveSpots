@@ -11,8 +11,6 @@ angular.module('clientApp')
     return $http.get('/api/reviews/' + id);
   };
 
-
-
   this.postReview = function (review) {
     return $http.post('/api/reviews', { review: review } );
   };

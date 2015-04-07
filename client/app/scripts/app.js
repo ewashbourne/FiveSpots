@@ -31,6 +31,11 @@ angular
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .state('comment', {
+        url: '/comment',
+        templateUrl: 'views/comment.html',
+        controller: 'ReviewCtrl'
       });
 
     $urlRouterProvider.otherwise('home');
