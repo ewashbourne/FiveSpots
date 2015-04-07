@@ -18,14 +18,26 @@ angular.module('clientApp')
       center: coords,
       zoom: 15,
     };
-    $scope.marker = angular.isUndefined($scope.marker) ? {  
-      idKey: 0,
-      coords: coords
-    } : $scope.marker;
+    var markerSet = _.once(makeMarker);
+    $scope.marker = markerSet(coords);
+    // $scope.marker = isUserStationary(position) ?  : $scope.marker;
+    // set up api query string using current location as center of search
     var location = coords.latitude.toString() + ',' + coords.longitude.toString();
     var url = '/api/restaurants.json?location=' + location;
     $scope.getRestaurants(url);
   };
+
+  function makeMarker(coords) {
+    console.log('in makeMarker');
+    var obj = { idKey: 0, coords: coords };
+    return obj;
+  }
+
+  // function isUserStationary(position) {
+  //   console.log('_.negate(_.isNull(position.coords.speed)) ' + _.negate(_.isNull(position.coords.speed)));
+  //   return angular.isUndefined($scope.marker) || _.negate(_.isNull(position.coords.speed));
+  // }
+
 
     // Html 5 Api function to get position 
   navigator.geolocation.getCurrentPosition(onSuccess);
@@ -57,13 +69,6 @@ angular.module('clientApp')
       return restaurant.price_level < 3 && restaurant.rating > 3.8;
     }));
   }
-  
-  // select restaurant for lower end  -->  button entry function
-  $scope.getComfortFood = function () { 
-    // makeRestaurantMarkers(restaurantSelect());
-    console.log('in getComfortFood');
-    
-  };
 
   // get data from google places via rails server
   $scope.getRestaurants = function (url) {
