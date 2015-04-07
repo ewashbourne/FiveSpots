@@ -92,7 +92,7 @@ angular.module('clientApp')
         case 'high':
           console.log('high choice');
           choiceLevel = {
-            price: 3,
+            price: 2,
             rating: 3
           };
           priceChooser = restaurant.price_level >= choiceLevel.price;

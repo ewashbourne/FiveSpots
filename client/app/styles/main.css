@@ -75,6 +75,10 @@ h6 {
 }
 
 
+.search-results {
+ background-color: #fff;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -88,6 +92,7 @@ h6 {
 
 .search-map {
   padding-left: 20px;
+  margin-top: 25px;
 }
 
   
