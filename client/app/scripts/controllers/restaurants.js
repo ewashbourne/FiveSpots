@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('RestaurantsCtrl', ['$http', '$rootScope', '$scope', 'RestaurantsService', function($http, $rooScope, $scope, RestaurantsService) {
+.controller('RestaurantsCtrl', ['$http', '$rootScope', '$scope', 'RestaurantsService', function($http, $rootScope, $scope, RestaurantsService) {
 
   $scope._ = _;   
   $scope.restaurantMarkers = [];
@@ -45,14 +45,6 @@ angular.module('clientApp')
     }
     $scope.restaurantMarkers = list;
   }
-
-
-  
-  //  ????
-  function onError(error) {
-      console.log('code: ' + error.code  + '\n' + 'message: ' + error.message + '\n');
-  }
-
 
   // filter list of restaurants to (lower level)
   function restaurantSelect() {
