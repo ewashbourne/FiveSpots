@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('clientApp')
-.controller('ReviewCtrl', ['$scope', 'ReviewService', function($scope, ReviewService) {
+.controller('ReviewCtrl', ['$scope', '$state', 'ReviewService', function($scope, $state, ReviewService) {
   $scope.formReviews = [];
   $scope.getReviews = function () {
     ReviewService.getReviews()
@@ -22,13 +22,17 @@ angular.module('clientApp')
     });
   };
 
-  $scope.postReview = function (review) {
+  $scope.postReview = function () {
+    var review = $scope.review;
+    review.restaurant_id = ReviewService.getRestaurantId();
     ReviewService.postReview(review)
     .success(function (data) {
       console.log('YAY Posted');
+      $state.go('home');
       $scope.formReviews.push(data);
     }).error(function() {
       console.log('Post Error');
+      $state.go('home');
     });
   };
   
